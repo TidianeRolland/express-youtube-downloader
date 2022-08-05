@@ -59,6 +59,10 @@ app.get("/api/download", async (req: Request, res: Response) => {
   }).pipe(res);
 });
 
+app.get("/api/home", (req: Request, res: Response) => {
+  res.send("Hello World!");
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
 });
