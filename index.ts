@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import ytdl from "ytdl-core";
 import cors from "cors";
+import contentDisposition from "content-disposition";
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -37,10 +38,11 @@ app.post("/videoInfo", async (req: Request, res: Response) => {
 app.get("/download", async (req: Request, res: Response) => {
   const { url, filter, quality, title } = req.query;
   const extension = filter === "audio" ? "mp3" : "mp4";
+  const filename = `${title}.${extension}`;
 
   res.setHeader(
     "Content-Disposition",
-    `attachment; filename=${title}.${extension}`
+    `attachment; filename=${contentDisposition(filename)}`
   );
 
   const _filter = filter === "audio" ? "audioonly" : "audioandvideo";
