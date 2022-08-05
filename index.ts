@@ -62,3 +62,5 @@ app.get("/download", async (req: Request, res: Response) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
 });
+
+export default app;
