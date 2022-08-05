@@ -16,7 +16,7 @@ interface VideoInfo {
   lengthSeconds: string;
 }
 
-app.post("/videoInfo", async (req: Request, res: Response) => {
+app.post("/api/videoInfo", async (req: Request, res: Response) => {
   const url = req.body.url;
 
   await ytdl
@@ -35,7 +35,7 @@ app.post("/videoInfo", async (req: Request, res: Response) => {
     });
 });
 
-app.get("/download", async (req: Request, res: Response) => {
+app.get("/api/download", async (req: Request, res: Response) => {
   const { url, filter, quality, title } = req.query;
   const extension = filter === "audio" ? "mp3" : "mp4";
   const filename = `${title}.${extension}`;
